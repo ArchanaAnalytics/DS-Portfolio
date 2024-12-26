@@ -114,4 +114,60 @@ My portfolio includes Data Science projects demonstrating expertise in Machine L
     - CNNs are well-suited for image classification tasks, particularly with datasets like MNIST.
     - Proper data preprocessing (normalization, reshaping) and one-hot encoding significantly improve model performance.
   - **Best Model**: CNN with **two convolutional layers**, max-pooling, and a dense output layer achieved optimal performance in classifying MNIST digits.
+ 
+### 11. [Crowdfunding Success Prediction](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Crowdfunding%20Campaign%20Success%20Prediction.ipynb)
+- **Overview**: Analyzed crowdfunding campaign success using various machine learning models to predict project outcomes based on features like goal amount, category, and duration.
+- **Key Techniques**:
+  - EDA to explore relationships between features and campaign success.
+  - Data preprocessing: handled missing values and outliers; encoded categorical variables.
+  - Built and compared models: Random Forest, Naive Bayes, SVM, XGBoost.
+  - Feature selection using Recursive Feature Elimination (RFE).
+- **Outcome**: SVM achieved the highest accuracy (99.87%), with XGBoost (99.27%) recommended for better efficiency.
+
+### 12. [Marketing Campaign Performance Insights](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Marketing%20Campaign%20Performance%20Insights.ipynb)
+- **Overview**: This project analyzes digital marketing campaigns to optimize ROI by examining key metrics such as conversion rates, acquisition costs, and engagement across various channels, campaign types, and audience segments. The analysis includes customer segmentation, time-based trends, and geographic performance to improve future strategies.
+- **Key Techniques**:
+  - **Data Preprocessing & EDA**: Clean and analyze data to detect patterns.
+  - **Correlation Analysis**: Examine relationships between metrics (e.g., clicks, ROI).
+  - **Segmentation**: Identify high-performing customer segments.
+  - **Geographic & Time-Based Insights**: Optimize marketing based on location and seasonal trends.
+  - **Visualization**: Present insights using charts and graphs.
+- **Outcome**:
+  - **Optimization of Acquisition Costs**: High acquisition costs reduce ROI, suggesting better cost management.
+  - **Effective Channels**: Social media and influencer campaigns show strong engagement and ROI.
+  - **Customer Segmentation**: Non-English segments (e.g., Spanish, Mandarin) have higher conversion rates.
+  - **Geographic Insights**: Cities like Dallas and Chicago offer better ROI and lower costs.
+  - **Seasonal Trends**: February and November show dips in performance, requiring improved CTAs.
+  - **Campaign Duration**: 30-day campaigns are popular, but 60-day campaigns have higher ROI.
+- **Actionable insights**: To focus on reducing acquisition costs, enhancing localization, and leveraging social media for better ROI.
+
+### 13. [Mobile Price Prediction using Linear Regression](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Mobile%20Price%20Prediction.ipynb)
+- **Overview**: Predicted mobile prices based on features like RAM, camera quality, and battery using Linear Regression.
+- **Key Techniques**:
+  - EDA: Analyzed feature distributions, correlations, and identified important factors influencing price.
+  - Data preprocessing: Treated categorical variables and handled outliers.
+  - Built a Linear Regression model with selected features.
+  - Evaluated model performance using R², MAE, MSE, and RMSE.
+- **Outcome**: Model explained 85.8% of price variance (R² = 0.858), with MAE of 189. Increasing features improved R² to 0.93.
+
+### 14. [Campus Placement Prediction](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Campus%20Placement%20Prediction.ipynb)
+- **Overview**: Developed and evaluated predictive models (Logistic Regression, Decision Tree, K-Nearest Neighbors) to classify students' placement status based on academic and extracurricular factors.
+- **Key Techniques**:
+  - **Data Preprocessing**: Cleaned data by handling missing values and encoding categorical features using Label Encoding.
+  - **Feature Selection**: Used correlation matrix and SelectKBest to identify key predictors.
+  - **Model Building**: Built and evaluated Logistic Regression, Decision Tree, and KNN models.
+  - **Model Evaluation**: Tested model performance using accuracy scores across different parameters.
+- **Outcome**: 
+  - Logistic Regression performed best with an accuracy of 79.8%.
+  - KNN with `k=15` achieved 79.1%, and Decision Tree with `max_depth=3` achieved 77.6%.
+  - Logistic Regression was the most consistent and best-performing model for this dataset.
+
+### 15. [Diabetes Diagnosis Based on Patient Health Metrics](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Diabetes%20Diagnosis%20Based%20on%20Patient%20Health%20Metrics.ipynb)
+- **Overview**: Predicted diabetes diagnosis (Diabetic, Non-Diabetic, Pre-diabetic) based on patient health metrics like age, BMI, HbA1c, and cholesterol levels using machine learning models.
+- **Key Techniques**:
+  - Data cleaning: handled missing values, outliers, and standardized columns.
+  - Exploratory Data Analysis (EDA) to visualize feature distributions and correlations.
+  - Built and evaluated models: Logistic Regression, Random Forest, KNN, SVM.
+  - Addressed class imbalance using SMOTE.
+- **Outcome**: Random Forest achieved the highest accuracy (98.15%) and F1-score (98.16%), recommended for deployment.
 
