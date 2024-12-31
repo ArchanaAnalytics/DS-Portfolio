@@ -235,3 +235,28 @@ My portfolio includes Data Science projects demonstrating expertise in Machine L
   - Cleaned dataset with standardized area and price values, improving prediction accuracy.  
   - Visualizations revealed trends such as the most expensive locations and the impact of amenities.  
   - Regression models provided insights and predictions reflecting real-world real estate price dynamics.
+ 
+### 20. [Bank Customer Churn Analysis (SQL)](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/BankCustomerChurn_Analysis.sql)
+
+- **Overview**: This analysis examines customer churn in a banking dataset, identifying patterns and trends in customer behavior, demographics, and financial attributes that influence churn.  
+- **Key Techniques**:  
+  - **Data Aggregation**: Analyzed customer demographics, financial metrics, and behavioral patterns using SQL queries.  
+  - **Segmentation**: Categorized customers by attributes such as churn status, age group, tenure range, and credit score.  
+  - **Insights Extraction**: Derived actionable insights by calculating averages, percentages, and churn rates.  
+- **Outcome**:  
+  - Identified key factors driving customer churn, including age, credit score, and activity level.  
+  - Highlighted demographic and financial profiles of churned customers for targeted interventions.  
+  - Provided actionable metrics like churn rates by country, tenure, and product usage for strategic decision-making.
+ 
+### 21. [E-Commerce Customer Churn Data Wrangling & Analysis](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/E-Commerce%20Customer%20churn%20Analysis.sql)
+
+- **Overview**: This project focuses on cleaning and analyzing customer churn data by handling missing values, removing outliers, and transforming data for further analysis. It aims to derive insights into customer behaviors, demographics, and churn-related patterns.  
+- **Key Techniques**:  
+  - **Data Cleaning**: Imputed missing values, removed outliers, and standardized inconsistent data.  
+  - **Data Transformation**: Renamed columns, added new ones (e.g., `ChurnStatus`), and dropped irrelevant columns.  
+  - **Exploration & Analysis**: Aggregated data to uncover churn patterns, customer preferences, and behaviors.  
+- **Outcome**:  
+  - Successfully cleaned and transformed the dataset to ensure consistency and accuracy.
+  - Generated valuable insights on customer churn, including churned customer demographics, preferred devices, and payment methods.
+  - Provided actionable metrics for the business, such as the percentage of churned customers who complained, the most preferred payment modes, and the city tier with the highest churn rate.
+  - Enabled further analysis, including customer segmentation based on proximity to warehouse and categorization of customers by different attributes.
