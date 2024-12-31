@@ -171,3 +171,67 @@ My portfolio includes Data Science projects demonstrating expertise in Machine L
   - Addressed class imbalance using SMOTE.
 - **Outcome**: Random Forest achieved the highest accuracy (98.15%) and F1-score (98.16%), recommended for deployment.
 
+### 16. [Bank Loan Performance Analysis - PowerBI Dashboard](https://app.powerbi.com/view?r=eyJrIjoiODgwOTQ2ZWQtMDEyMy00MjAyLThjMDQtOTE1ZGRhZDcyMGUzIiwidCI6Ijk0NWFlNmVkLWJiZmYtNGM0My05YjRhLWZkNDJmMDRiY2FkZSJ9&authuser=0)
+- **Overview**: This project analyzes a loan dataset to understand how borrower details (employment length, income, debt-to-income ratio) and loan characteristics (amount, term, interest rate) affect loan performance. The goal is to provide insights to optimize lending strategies, mitigate credit risk, and enhance portfolio management.
+- **Key Techniques**:
+  - **Data Transformation**: Cleaned and formatted data, handled missing values, and created new columns like `total_amount_paid` and `delinquency_status`.
+  - **Data Modeling**: Established relationships between loan and borrower data.
+  - **DAX Measures**: Created calculated columns (e.g., `remaining_installments`) and measures (e.g., `Fully Paid Loan Percentage`).
+  - **Visualization**: Built reports on loan performance and borrower profiles using dynamic visuals and key metrics.
+- **Outcome**:
+  - **Loan Insights**: Analyzed trends in loan performance by amount, status, interest rates, etc.
+  - **Borrower Behavior**: Gained insights into borrower demographics, income, and delinquency patterns.
+  - **Actionable Insights**: Provided recommendations for improving lending strategies and reducing credit risk.
+
+### 17. [Ecomm Sales Optimization & Customer Satisfaction](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Ecomm%20Sales%20Optimization%20%26%20Customer%20Satisfaction.ipynb)  
+- **Overview**: Analyzed e-commerce sales data to optimize strategies and improve customer satisfaction by exploring datasets (browsing, sales, customer, feedback) to uncover insights into customer behavior and sales trends.  
+- **Key Techniques**:  
+  - **Data Merging & Cleaning**: Merged datasets (inner, left join), handled missing values (interpolation, mean/mode imputation), removed duplicates, standardized columns.  
+  - **Exploratory Data Analysis**:  
+    - Univariate: Distribution analysis, outlier detection.  
+    - Bivariate: Correlation heatmaps, scatterplots (sales vs. discounts/ratings).  
+    - Advanced: Trend analysis, cohort analysis, sentiment analysis.  
+  - **Predictive Modeling**: Built a **Random Forest Regressor** to predict `Sales_Amount`, evaluated with RMSE and R².  
+  - **Customer Segmentation**: Applied **K-Means Clustering** to segment customers by purchase behavior and feedback.  
+  - **Sales & Feedback Dashboards**: Developed dashboards to visualize sales trends, customer segmentation, and product performance.  
+- **Outcome**:  
+  - Identified top-performing regions/products.  
+  - Highlighted key factors influencing customer satisfaction and feedback.  
+  - Built a predictive model for accurate sales forecasting.  
+  - Created customer segments for targeted marketing strategies.
+
+### 18. [Loan Approval Prediction and Analysis](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Loan%20Approval%20Prediction%20and%20Analysis.ipynb)
+- **Overview**: This project predicts loan approval outcomes using data analysis and machine learning. It explores features like applicant income, credit history, and loan amount, addressing missing values and imbalances, and applying various models to classify loan applications. The goal is to build an accurate model with a focus on the F1 score to handle class imbalance.  
+- **Key Techniques**:  
+  - **Data Exploration**:  
+    - Performed univariate, bivariate, and multivariate analysis on categorical and numerical features.  
+    - Visualized distributions of loan amounts, incomes, and credit history.  
+    - Analyzed relationships between features like `Property_Area`, `Education`, and `Self_Employed`.  
+  - **Data Preprocessing**:  
+    - Handled missing values using imputation (KNN, mode, and median).  
+    - Removed outliers from `LoanAmount` and applied square root transformation for skewness.  
+    - Encoded categorical variables and scaled numerical features.  
+  - **Feature Selection**:  
+    - Selected key features like `ApplicantIncome`, `LoanAmount`, and `Credit_History` influencing loan approval.  
+  - **Modeling**:  
+    - Applied classifiers: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, KNN.  
+    - Optimized model using **F1 score**, focusing on handling class imbalance.  
+    - **Logistic Regression** achieved the best performance, balancing precision and recall.  
+- **Outcome**:  
+  - Built a **Logistic Regression** model for loan approval prediction with a strong F1 score.  
+  - Identified key factors affecting loan approval, such as credit history and income.  
+  - Improved model performance through missing value handling and feature scaling.
+
+### 19. [Data-Driven Insights into Realtime Real Estate Price Prediction](https://github.com/ArchanaAnalytics/DS-Portfolio/blob/main/Projects/Data%20Driven%20Insights%20into%20Realtime%20Real%20Estate%20Price%20Prediction.ipynb)
+- **Overview**: This project develops a machine learning model to predict real estate prices based on property features like title, location, carpet area, price, and amenities. It includes data preprocessing, feature engineering, and exploratory data analysis (EDA) to uncover trends and patterns. The goal is to build and evaluate multiple regression models to understand the factors influencing property values.  
+- **Key Techniques**:  
+  - **Data Loading and Preprocessing**: Loaded the dataset, renamed columns, handled missing values, and removed duplicates.  
+  - **Data Cleaning**: Addressed missing values through imputation and removal, standardized area units to square feet, and removed unrealistic outliers.  
+  - **Feature Engineering**: Transformed non-numeric columns, extracted useful features, and applied scaling and transformation techniques.  
+  - **Exploratory Data Analysis (EDA)**: Visualized distribution patterns, identified relationships between features, and created word clouds for location frequencies.  
+  - **Outlier Removal and Skewness Handling**: Applied IQR-based outlier removal and square-root transformations to reduce skewness in key numerical features.  
+  - **Model Building**: Evaluated multiple regression models to predict house prices and identify the most important features influencing property values.  
+- **Outcome**:  
+  - Cleaned dataset with standardized area and price values, improving prediction accuracy.  
+  - Visualizations revealed trends such as the most expensive locations and the impact of amenities.  
+  - Regression models provided insights and predictions reflecting real-world real estate price dynamics.
