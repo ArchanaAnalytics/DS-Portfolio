@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doc Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --accent: #00e5a0;
+      --accent-dim: #00e5a022;
+      --text: #e8e8e8;
+      --muted: #666;
+      --user-bg: #1a2a22;
+      --bot-bg: #1a1a1a;
+      --error: #ff4d4d;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Header ── */
+    header {
+      width: 100%;
+      max-width: 780px;
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    header p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── Chat window ── */
+    #chat-window {
+      flex: 1;
+      width: 100%;
+      max-width: 780px;
+      overflow-y: auto;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    #chat-window::-webkit-scrollbar { width: 4px; }
+    #chat-window::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .msg {
+      display: flex;
+      flex-direction: column;
+      max-width: 88%;
+      animation: fadeUp 0.25s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .msg.user { align-self: flex-end; }
+    .msg.bot  { align-self: flex-start; }
+
+    .msg-bubble {
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    .msg.user .msg-bubble {
+      background: var(--user-bg);
+      border: 1px solid #00e5a044;
+      color: var(--text);
+      border-bottom-right-radius: 3px;
+    }
+    .msg.bot .msg-bubble {
+      background: var(--bot-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-bottom-left-radius: 3px;
+    }
+    .msg-meta {
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .msg.user .msg-meta { text-align: right; }
+
+    /* cached badge */
+    .badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      padding: 1px 6px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid #00e5a033;
+      margin-left: 6px;
+      vertical-align: middle;
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    /* typing indicator */
+    .typing .msg-bubble {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      padding: 14px 18px;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: bounce 1.2s infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40%            { transform: translateY(-6px); opacity: 1; }
+    }
+
+    /* ── Input bar ── */
+    #input-area {
+      width: 100%;
+      max-width: 780px;
+      padding: 16px 20px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .input-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    textarea {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.88rem;
+      padding: 12px 14px;
+      resize: none;
+      outline: none;
+      min-height: 46px;
+      max-height: 140px;
+      overflow-y: auto;
+      transition: border-color 0.2s;
+    }
+    textarea:focus { border-color: var(--accent); }
+    textarea::placeholder { color: var(--muted); }
+
+    button#send-btn {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    button#send-btn:hover  { opacity: 0.85; }
+    button#send-btn:active { transform: scale(0.97); }
+    button#send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .hint {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><span class="status-dot"></span>DOC_ASSISTANT</h1>
+  <p>Ask questions about your uploaded documents · powered by local LLM</p>
+</header>
+
+<div id="chat-window">
+  <!-- welcome message -->
+  <div class="msg bot">
+    <div class="msg-bubble">Hello! I'm your document assistant. Place your <strong>.txt</strong> files in the <code>docs/</code> folder, then ask me anything about them.</div>
+    <div class="msg-meta">assistant</div>
+  </div>
+</div>
+
+<div id="input-area">
+  <div class="input-row">
+    <textarea id="question" rows="1" placeholder="Ask a question about your documents…"></textarea>
+    <button id="send-btn" onclick="sendQuestion()">ASK →</button>
+  </div>
+  <div class="hint">Press Enter to send · Shift+Enter for new line</div>
+</div>
+
+<script>
+  const chatWindow = document.getElementById('chat-window');
+  const questionInput = document.getElementById('question');
+  const sendBtn = document.getElementById('send-btn');
+
+  // Auto-resize textarea
+  questionInput.addEventListener('input', () => {
+    questionInput.style.height = 'auto';
+    questionInput.style.height = questionInput.scrollHeight + 'px';
+  });
+
+  // Enter to send
+  questionInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendQuestion();
+    }
+  });
+
+  function addMessage(role, text, meta = '') {
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.innerHTML = `
+      <div class="msg-bubble">${text}</div>
+      <div class="msg-meta">${meta}</div>
+    `;
+    chatWindow.appendChild(div);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+    return div;
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'msg bot typing';
+    div.id = 'typing-indicator';
+    div.innerHTML = `<div class="msg-bubble"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+    chatWindow.appendChild(div);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
+  function removeTyping() {
+    const t = document.getElementById('typing-indicator');
+    if (t) t.remove();
+  }
+
+  async function sendQuestion() {
+    const question = questionInput.value.trim();
+    if (!question) return;
+
+    // Show user message
+    addMessage('user', escapeHtml(question), 'you');
+    questionInput.value = '';
+    questionInput.style.height = 'auto';
+    sendBtn.disabled = true;
+    showTyping();
+
+    try {
+      const res = await fetch('/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      });
+
+      removeTyping();
+
+      if (!res.ok) {
+        const err = await res.json();
+        addMessage('bot', `⚠️ ${err.detail}`, 'error');
+        return;
+      }
+
+      const data = await res.json();
+      const cachedTag = data.cached ? '<span class="badge">CACHED</span>' : '';
+      const meta = `assistant · ${data.response_time_ms}ms${cachedTag}`;
+      addMessage('bot', escapeHtml(data.answer), meta);
+
+    } catch (e) {
+      removeTyping();
+      addMessage('bot', '⚠️ Could not reach the server. Is FastAPI running?', 'error');
+    } finally {
+      sendBtn.disabled = false;
+      questionInput.focus();
+    }
+  }
+
+  function escapeHtml(text) {
+    return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  }
+</script>
+</body>
+</html>

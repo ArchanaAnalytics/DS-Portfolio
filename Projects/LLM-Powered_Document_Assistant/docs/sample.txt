@@ -1,0 +1,25 @@
+Company: TechNova Solutions
+Founded: 2018
+Headquarters: San Francisco, CA
+
+Products:
+- DataSync Pro: A real-time data synchronization tool for enterprises.
+- CloudMap: A cloud infrastructure visualization platform.
+- InsightIQ: An AI-powered analytics dashboard.
+
+Employee Count: 320 employees as of 2024.
+
+Revenue: $42 million in FY2023.
+
+CEO: Sarah Mendes
+CTO: Raj Patel
+
+Mission: To simplify complex data workflows for modern businesses.
+
+Recent News:
+- TechNova raised $15M in Series B funding in March 2024.
+- DataSync Pro won "Best B2B Tool" at the 2023 SaaS Awards.
+- The company expanded to Europe, opening an office in Amsterdam in Q1 2024.
+
+Support Email: support@technova.io
+Website: www.technova.io
