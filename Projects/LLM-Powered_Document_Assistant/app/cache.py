@@ -1,11 +1,9 @@
 """
 cache.py — Simple in-memory response cache
 
-Why: Avoid calling the LLM for the same question twice.
-     This reduces latency and saves compute.
+Avoid calling the LLM for the same question twice.
+This reduces latency and saves compute.
 
-Interview tip: "I used a TTL-based in-memory cache. 
-For production, this could be replaced with Redis."
 """
 
 import time
