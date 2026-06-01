@@ -1,10 +1,8 @@
 """
 limiter.py — Simple rate limiter (per IP address)
 
-Why: Prevent abuse and control load on the local LLM.
+Prevent abuse and control load on the local LLM.
 
-Interview tip: "I implemented a sliding window rate limiter.
-In production, this could use Redis or a middleware like slowapi."
 """
 
 import time
